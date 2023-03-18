@@ -1,1 +1,1 @@
-# angular-complete
+# angular-complete-course
