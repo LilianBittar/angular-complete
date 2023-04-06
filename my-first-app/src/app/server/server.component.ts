@@ -1,10 +1,16 @@
+import { style } from "@angular/animations";
 import { Component } from "@angular/core";
 
 @Component({
     // selector: '[app-server]',
     // selector: '.app-servers',
     selector: 'app-server',
-    templateUrl: './server.component.html'
+    templateUrl: './server.component.html',
+    styles: [`
+        .online {
+            color: white;
+        }
+    `]
 })
 export class ServerComponent {
 serverId: number = 10;
