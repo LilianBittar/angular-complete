@@ -14,8 +14,8 @@
     <div class="coll-xs-12">
         <app-recipes-item
         *ngFor="let recipeEL of recipes"
-        [recipe]="recipeEL"
-        (recipeSelected)="(recipeEL)"></app-recipes-item>
+        [recipe]="recipeEL" 
+        (recipeSelected)="onRecipeSelected(recipeEL)"></app-recipes-item>
     </div>
 </div>
 
