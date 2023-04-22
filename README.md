@@ -1,3 +1,3 @@
 # angular-complete-course
 
-Angular
+Angular project
