@@ -12,7 +12,7 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
 import { DropdownDirective } from './shared/dropdown.directive';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { StoreModule } from '@ngrx/store';
@@ -20,6 +20,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { RecipeService } from './recipes/recipe.service';
 import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { AuthInterceptorService } from './auth/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,12 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([])
   ],
-  providers: [ShoppingListService, RecipeService],
+  providers: [ShoppingListService, 
+              RecipeService, 
+              {
+                provide: HTTP_INTERCEPTORS, 
+                useClass: AuthInterceptorService, 
+                multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
