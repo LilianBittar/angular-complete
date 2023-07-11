@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, Subject, throwError } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
 import { User } from "./user.model";
+import { Router } from "@angular/router";
 
 export interface AuthResponseData {
     kind: string;
@@ -19,7 +20,7 @@ export class AuthService{
     user = new BehaviorSubject<User>(null);
  
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private router: Router) { }
 
         signup(email: string, password: string) {
             return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBnfrsf5JOo14yNh6w0MxPZQZ4ndhy8rxE',
@@ -46,11 +47,22 @@ export class AuthService{
                 }));
         }
 
-        private handleAuthentication(email: string, userID: string, token: string, expiresIn: number) {
-            const expirationDate = new Date(new Date().getTime() +expiresIn * 1000);
+        logout() {
+            this.user.next(null);
+            this.router.navigate(['/auth']);
+        }
+
+
+        private handleAuthentication(
+            email: string, 
+            userID: string, 
+            token: string, 
+            expiresIn: number
+            ) {
+            const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
             const user = new User(email, userID, token, expirationDate);
             this.user.next(user);
-        };
+        }
 
         private handleError(errorRes: HttpErrorResponse) {
             let errorMessage = 'An unknown error occurred!';
