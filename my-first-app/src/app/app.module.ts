@@ -8,6 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core.module';
+import { shoppingListReducer } from './shopping-list/store/shopping-list.reducer';
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { CoreModule } from './core.module';
     AppRoutingModule,
     SharedModule,
     CoreModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({shoppingList: shoppingListReducer}, {}),
     EffectsModule.forRoot([])
   ],
   bootstrap: [AppComponent]
