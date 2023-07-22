@@ -2,6 +2,7 @@
   "dependencies": {
     "@angular/cli": "^15.2.7",
     "@angular/core": "^16.1.2",
+    "@ngrx/store": "^16.1.0",
     "rxjs": "^6.6.7",
     "rxjs-compat": "^6.6.7"
   }
