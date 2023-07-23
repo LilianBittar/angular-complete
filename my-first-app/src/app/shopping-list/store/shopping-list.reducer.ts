@@ -1,4 +1,6 @@
 
+
+
 import { Ingredient } from "../../shared/ingredient.model";
 import * as shoppingListActiopns from "./shopping-list.action";
 
@@ -10,13 +12,21 @@ const initialState = {
     ]
 };
 
-export function shoppingListReducer(state = initialState, action: shoppingListActiopns.AddIngredient) {
+export function shoppingListReducer(
+    state = initialState, 
+    action: shoppingListActiopns.ShoppingListActions
+    ) {
     switch (action.type) {
         case shoppingListActiopns.ADD_INGREDIENT:
             return {
                 ...state,
                 ingredients: [...state.ingredients, action.payload]
-            }
+            };
+            case shoppingListActiopns.ADD_INGREDIENTS:
+                return {
+                    ...state,
+                    ingredients: [...state.ingredients, ...action.payload]
+                };
         default:
             return state;
     }
