@@ -10,38 +10,31 @@ export const STOP_EDIT = 'STOP_EDIT';
 
 export class AddIngredient implements Action {
     readonly type = ADD_INGREDIENT;
-    payload: Ingredient;
 
-    constructor(payload: Ingredient) {}
+    constructor(public payload: Ingredient) {}
 }
   
 
 export class AddIngredients implements Action {
     readonly type = ADD_INGREDIENTS;
-    payload: Ingredient[];
 
-    constructor(payload: Ingredient[]) {}
+    constructor(public payload: Ingredient[]) {}
 }
 
 export class UpdateIngredient implements Action {
     readonly type = UPDATE_INGREDIENT;
-    payload: {index: number, ingredient: Ingredient};
 
-    constructor(payload: {index: number, ingredient: Ingredient}) {}
+    constructor(public payload: Ingredient) {}
 }
 
 export class DeleteIngredient implements Action {
     readonly type = DELETE_INGREDIENT;
-    payload: number;
-
-    constructor(payload: number) {}
 }
 
 export class StartEdit implements Action {
     readonly type = START_EDIT;
-    payload: number;
 
-    constructor(payload: number) {}
+    constructor(public payload: number) {}
 }
 
 export class StopEdit implements Action {
