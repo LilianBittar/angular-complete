@@ -8,7 +8,8 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core.module';
-import { shoppingListReducer } from './shopping-list/store/shopping-list.reducer';
+import * as fromApp from './store/app.reducer';
+
 
 
 @NgModule({
@@ -22,8 +23,8 @@ import { shoppingListReducer } from './shopping-list/store/shopping-list.reducer
     AppRoutingModule,
     SharedModule,
     CoreModule,
-    StoreModule.forRoot({shoppingList: shoppingListReducer}, {}),
-    EffectsModule.forRoot([])
+    StoreModule.forRoot(fromApp.appReducer),
+    EffectsModule.forRoot()
   ],
   bootstrap: [AppComponent]
 })
