@@ -6,7 +6,7 @@ import { User } from "./user.model";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import * as fromApp from '../store/app.reducer';
-import * as AuthActions from './store/auth.action';
+import * as AuthActions from './store/auth.actions';
 
 export interface AuthResponseData {
     kind: string;
